@@ -29,7 +29,7 @@ export default async function RootLayout({
     <html lang="ja">
       <ThemeProvider>
         <body>
-          <div className="xl:mt-[60px]">
+          <div>
             <Suspense
               fallback={
                 <LoadingComponent type="circular" message="読み込み中..." />
@@ -42,7 +42,11 @@ export default async function RootLayout({
                 </>
               )}
               {/* メインコンテンツ */}
-              <main className="flex-1 xl:mt-[60px]">{children}</main>
+              <main
+                className={`flex-1 ${!ignorePaths.includes(header_url) ? 'xl:mt-[60px]' : ''} `}
+              >
+                {children}
+              </main>
             </Suspense>
           </div>
         </body>

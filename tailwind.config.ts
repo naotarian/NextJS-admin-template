@@ -1,10 +1,16 @@
 import type { Config } from 'tailwindcss'
 const defaultTheme = require('tailwindcss/defaultTheme')
 export default {
-  content: ['./src/pages/**/*.{js,ts,jsx,tsx,mdx}', './src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
+  ],
   theme: {
     screens: {
-      xs: '375px',
+      mobile: { max: '450px' },
+      overMobile: { min: '451px' },
+      tablet: { min: '450px', max: '1024px' },
       ...defaultTheme.screens
     },
     // sm	640ピクセル	@media (min-width: 640px) { ... }

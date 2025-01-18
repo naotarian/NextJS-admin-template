@@ -12,15 +12,12 @@ export const generateMetadata = (): Metadata => {
 export default function LoginPage() {
   console.log('LoginPage')
   return (
-    <div
-      style={{ maxWidth: '400px', margin: '50px auto', textAlign: 'center' }}
-    >
-      <h1>従業員ログイン</h1>
-      {/* クライアントコンポーネントを使用 */}
-      <div className="my-2">
-        <LoadingComponent type="circular" message="データを読み込み中です..." />
-        {/* <LoadingComponent type="circular" message="読み込み中..." withOverlay /> */}
-        <Form />
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="overMobile:max-w-[400px] mobile:max-w-[95%] mx-auto text-center">
+        {/* クライアントコンポーネントを使用 */}
+        <div className="my-2">
+          <Form />
+        </div>
       </div>
     </div>
   )
