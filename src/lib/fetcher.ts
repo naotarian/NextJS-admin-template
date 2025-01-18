@@ -27,7 +27,13 @@ type FetcherOptions = {
  * @returns レスポンスのJSONを指定された型として返却
  * @throws HttpError サーバーエラーやクライアントエラー時
  */
-export async function fetcher<T>({ url, method = 'GET', headers = {}, body = null, cache = 'default' }: FetcherOptions): Promise<T> {
+export async function fetcher<T>({
+  url,
+  method = 'GET',
+  headers = {},
+  body = null,
+  cache = 'default'
+}: FetcherOptions): Promise<T> {
   // デフォルトヘッダー設定
   const defaultHeaders = {
     accept: 'application/json',

@@ -1,18 +1,22 @@
 'use client'
 import * as React from 'react'
-import Box from '@mui/material/Box'
-import Drawer from '@mui/material/Drawer'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
+
 import MenuIcon from '@mui/icons-material/Menu'
-import List from '@mui/material/List'
+
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
+import Drawer from '@mui/material/Drawer'
+import IconButton from '@mui/material/IconButton'
+import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
+import Toolbar from '@mui/material/Toolbar'
+
 import { useDeviceType } from '@/hooks/useDeviceType'
+
 import { menuItems, additionalItems } from '@/const/MenuList'
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false)
@@ -53,7 +57,12 @@ export default function TemporaryDrawer() {
       <AppBar position="static">
         <Toolbar>
           <Box sx={{ flexGrow: 1 }}>Right Drawer with AppBar</Box>
-          <IconButton edge="end" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleDrawer(true)}
+          >
             <MenuIcon />
           </IconButton>
         </Toolbar>

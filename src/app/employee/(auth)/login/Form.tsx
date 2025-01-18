@@ -11,7 +11,7 @@ import { useAuth } from '@/hooks/auth'
 const Form = () => {
   const { login } = useAuth({
     middleware: 'guest',
-    redirectIfAuthenticated: '/',
+    redirectIfAuthenticated: '/'
   })
   const [employeeNumber, setEmployeeNumber] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -30,7 +30,7 @@ const Form = () => {
       password,
       remember: false,
       setErrors,
-      setStatus,
+      setStatus
     })
     setLoading(false)
   }
@@ -65,7 +65,7 @@ const Form = () => {
           padding: '10px',
           fontSize: '16px',
           borderRadius: '4px',
-          border: '1px solid #ccc',
+          border: '1px solid #ccc'
         }}
       />
       <input
@@ -78,7 +78,7 @@ const Form = () => {
           padding: '10px',
           fontSize: '16px',
           borderRadius: '4px',
-          border: '1px solid #ccc',
+          border: '1px solid #ccc'
         }}
       />
       <Button

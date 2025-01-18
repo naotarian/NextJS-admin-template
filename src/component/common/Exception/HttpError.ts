@@ -1,4 +1,4 @@
-import { SerializedHttpError } from '@/component/common/Exception/type'
+import type { SerializedHttpError } from '@/component/common/Exception/type'
 export class HttpError extends Error {
   status: number
   constructor(message: string, status: number) {

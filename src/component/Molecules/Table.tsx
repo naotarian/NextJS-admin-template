@@ -1,6 +1,13 @@
 import React from 'react'
-import { TableContainer, Table, TableBody, TableCell, TableHead, TableRow } from '@/component/Atoms/TableAtoms'
-import Paper from '@mui/material/Paper'
+
+import {
+  TableContainer,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow
+} from '@/component/Atoms/TableAtoms'
 
 interface CustomTableProps<T> {
   headers: string[]
@@ -10,14 +17,23 @@ interface CustomTableProps<T> {
   headerStyles?: (header: string, index: number) => object // TableHead にスタイルを動的に適用
 }
 
-const CustomTable = <T,>({ headers, rows, renderRow, rowStyles, headerStyles }: CustomTableProps<T>) => {
+const CustomTable = <T,>({
+  headers,
+  rows,
+  renderRow,
+  rowStyles,
+  headerStyles
+}: CustomTableProps<T>) => {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer>
       <Table>
         <TableHead>
           <TableRow>
             {headers.map((header, index) => (
-              <TableCell key={index} sx={headerStyles ? headerStyles(header, index) : {}}>
+              <TableCell
+                key={index}
+                sx={headerStyles ? headerStyles(header, index) : {}}
+              >
                 {header}
               </TableCell>
             ))}
@@ -25,7 +41,11 @@ const CustomTable = <T,>({ headers, rows, renderRow, rowStyles, headerStyles }: 
         </TableHead>
         <TableBody>
           {rows.map((row, rowIndex) => (
-            <TableRow key={rowIndex} hover sx={rowStyles ? rowStyles(row, rowIndex) : {}}>
+            <TableRow
+              key={rowIndex}
+              hover
+              sx={rowStyles ? rowStyles(row, rowIndex) : {}}
+            >
               {renderRow(row)}
             </TableRow>
           ))}

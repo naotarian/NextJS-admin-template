@@ -4,7 +4,7 @@ import {
   Box,
   CircularProgress,
   LinearProgress,
-  Typography,
+  Typography
 } from '@mui/material'
 
 interface LoadingComponentProps {
@@ -16,7 +16,7 @@ interface LoadingComponentProps {
 const LoadingComponent: React.FC<LoadingComponentProps> = ({
   message = 'Loading...',
   type = 'circular',
-  withOverlay = false,
+  withOverlay = false
 }) => {
   return (
     <Box

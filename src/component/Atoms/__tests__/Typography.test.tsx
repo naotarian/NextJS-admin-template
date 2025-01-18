@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { render, screen } from '@testing-library/react'
+
 import { CustomTypography } from '../Typography' // テスト対象のコンポーネント
 import '@testing-library/jest-dom'
 
@@ -31,7 +33,11 @@ describe('CustomTypography', () => {
 
   test('applies additional props (className and sx)', () => {
     render(
-      <CustomTypography variant="h2" className="custom-class" sx={{ color: 'red' }}>
+      <CustomTypography
+        variant="h2"
+        className="custom-class"
+        sx={{ color: 'red' }}
+      >
         Custom Styled Heading
       </CustomTypography>
     )

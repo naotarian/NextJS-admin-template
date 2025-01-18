@@ -16,7 +16,7 @@ describe('fetcher 関数', () => {
     const mockResponse = { success: true }
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: jest.fn().mockResolvedValueOnce(mockResponse),
+      json: jest.fn().mockResolvedValueOnce(mockResponse)
     })
 
     const result = await fetcher<{ success: boolean }>({ url: '/test-url' })
@@ -25,9 +25,9 @@ describe('fetcher 関数', () => {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      cache: 'default',
+      cache: 'default'
     })
   })
 
@@ -35,13 +35,13 @@ describe('fetcher 関数', () => {
     const mockResponse = { success: true }
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: jest.fn().mockResolvedValueOnce(mockResponse),
+      json: jest.fn().mockResolvedValueOnce(mockResponse)
     })
 
     const result = await fetcher<{ success: boolean }>({
       url: '/test-url',
       method: 'POST',
-      body: { key: 'value' },
+      body: { key: 'value' }
     })
 
     expect(result).toEqual(mockResponse)
@@ -49,17 +49,17 @@ describe('fetcher 関数', () => {
       method: 'POST',
       headers: {
         accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ key: 'value' }),
-      cache: 'default',
+      cache: 'default'
     })
   })
 
   test('サーバーエラー時に HttpError をスローすること', async () => {
     mockFetch.mockResolvedValueOnce({
       ok: false,
-      status: 500,
+      status: 500
     })
 
     await expect(fetcher({ url: '/test-url' })).rejects.toThrowError(
@@ -67,10 +67,10 @@ describe('fetcher 関数', () => {
     )
   })
 
-  test('クライアントエラー時に HttpError をスローすること', async()=>{
+  test('クライアントエラー時に HttpError をスローすること', async () => {
     mockFetch.mockResolvedValueOnce({
       ok: false,
-      status: 400,
+      status: 400
     })
 
     await expect(fetcher({ url: '/test-url' })).rejects.toThrowError(
@@ -82,13 +82,13 @@ describe('fetcher 関数', () => {
     const mockResponse = { success: true }
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: jest.fn().mockResolvedValueOnce(mockResponse),
+      json: jest.fn().mockResolvedValueOnce(mockResponse)
     })
 
     const result = await fetcher<{ success: boolean }>({
       url: '/test-url',
       method: 'POST',
-      body: null,
+      body: null
     })
 
     expect(result).toEqual(mockResponse)
@@ -96,9 +96,9 @@ describe('fetcher 関数', () => {
       method: 'POST',
       headers: {
         accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      cache: 'default',
+      cache: 'default'
     })
   })
 
@@ -106,14 +106,14 @@ describe('fetcher 関数', () => {
     const mockResponse = { success: true }
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: jest.fn().mockResolvedValueOnce(mockResponse),
+      json: jest.fn().mockResolvedValueOnce(mockResponse)
     })
 
     const result = await fetcher<{ success: boolean }>({
       url: '/test-url',
       headers: {
-        Authorization: 'Bearer token',
-      },
+        Authorization: 'Bearer token'
+      }
     })
 
     expect(result).toEqual(mockResponse)
@@ -122,9 +122,9 @@ describe('fetcher 関数', () => {
       headers: {
         accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: 'Bearer token',
+        Authorization: 'Bearer token'
       },
-      cache: 'default',
+      cache: 'default'
     })
   })
 })

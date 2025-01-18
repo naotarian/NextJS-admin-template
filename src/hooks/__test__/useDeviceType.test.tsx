@@ -1,4 +1,5 @@
 import { renderHook, act } from '@testing-library/react'
+
 import { useDeviceType } from '../useDeviceType'
 
 describe('useDeviceType', () => {
@@ -50,8 +51,14 @@ describe('useDeviceType', () => {
 
     const { unmount } = renderHook(() => useDeviceType())
 
-    expect(addEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function))
+    expect(addEventListenerSpy).toHaveBeenCalledWith(
+      'resize',
+      expect.any(Function)
+    )
     unmount()
-    expect(removeEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function))
+    expect(removeEventListenerSpy).toHaveBeenCalledWith(
+      'resize',
+      expect.any(Function)
+    )
   })
 })

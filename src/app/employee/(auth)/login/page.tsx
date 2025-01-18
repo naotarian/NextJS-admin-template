@@ -12,7 +12,9 @@ export const generateMetadata = (): Metadata => {
 export default function LoginPage() {
   console.log('LoginPage')
   return (
-    <div style={{ maxWidth: '400px', margin: '50px auto', textAlign: 'center' }}>
+    <div
+      style={{ maxWidth: '400px', margin: '50px auto', textAlign: 'center' }}
+    >
       <h1>従業員ログイン</h1>
       {/* クライアントコンポーネントを使用 */}
       <div className="my-2">

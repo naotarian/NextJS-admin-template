@@ -1,6 +1,15 @@
 import React from 'react'
+
 import { render, screen } from '@testing-library/react'
-import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '../TableAtoms'
+
+import {
+  TableContainer,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell
+} from '../TableAtoms'
 
 describe('TableAtoms', () => {
   test('TableContainerが正常にレンダリングされること', () => {

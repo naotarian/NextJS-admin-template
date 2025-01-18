@@ -13,7 +13,9 @@ export const generateMetadata = (): Metadata => {
 export default async function Page() {
   await authCheckServer()
   return (
-    <div style={{ maxWidth: '400px', margin: '50px auto', textAlign: 'center' }}>
+    <div
+      style={{ maxWidth: '400px', margin: '50px auto', textAlign: 'center' }}
+    >
       {/* クライアントコンポーネントを使用 */}
       <div style={{ padding: '20px', maxWidth: '500px', margin: 'auto' }}>
         <DateTimeDisplay />

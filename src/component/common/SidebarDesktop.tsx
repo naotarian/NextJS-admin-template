@@ -1,25 +1,29 @@
 'use client'
 import * as React from 'react'
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles'
-import Box from '@mui/material/Box'
-import MuiDrawer from '@mui/material/Drawer'
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import List from '@mui/material/List'
-import CssBaseline from '@mui/material/CssBaseline'
-import Typography from '@mui/material/Typography'
-import Divider from '@mui/material/Divider'
-import IconButton from '@mui/material/IconButton'
-import MenuIcon from '@mui/icons-material/Menu'
+
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import MenuIcon from '@mui/icons-material/Menu'
+
+import MuiAppBar from '@mui/material/AppBar'
+import type { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import CssBaseline from '@mui/material/CssBaseline'
+import Divider from '@mui/material/Divider'
+import MuiDrawer from '@mui/material/Drawer'
+import IconButton from '@mui/material/IconButton'
+import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
-import MailIcon from '@mui/icons-material/Mail'
+import { styled, useTheme } from '@mui/material/styles'
+import type { Theme, CSSObject } from '@mui/material/styles'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+
 import { useDeviceType } from '@/hooks/useDeviceType'
+
 const drawerWidth = 240
 import { menuItems, additionalItems } from '@/const/MenuList'
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -79,7 +83,9 @@ const AppBar = styled(MuiAppBar, {
   ]
 }))
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(({ theme }) => ({
+const Drawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== 'open'
+})(({ theme }) => ({
   width: drawerWidth,
   flexShrink: 0,
   whiteSpace: 'nowrap',
@@ -125,12 +131,7 @@ export default function Sidebar() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={[
-              {
-                marginRight: 5
-              },
-              open && { display: 'none' }
-            ]}
+            sx={[{ marginRight: 5 }, open && { display: 'none' }]}
           >
             <MenuIcon />
           </IconButton>
@@ -141,7 +142,13 @@ export default function Sidebar() {
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>{theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}</IconButton>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'rtl' ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
+          </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
@@ -149,47 +156,23 @@ export default function Sidebar() {
             <ListItem key={item.name} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={[
-                  {
-                    minHeight: 48,
-                    px: 2.5
-                  },
+                  { minHeight: 48, px: 2.5 },
                   open
-                    ? {
-                        justifyContent: 'initial'
-                      }
-                    : {
-                        justifyContent: 'center'
-                      }
+                    ? { justifyContent: 'initial' }
+                    : { justifyContent: 'center' }
                 ]}
               >
                 <ListItemIcon
                   sx={[
-                    {
-                      minWidth: 0,
-                      justifyContent: 'center'
-                    },
-                    open
-                      ? {
-                          mr: 3
-                        }
-                      : {
-                          mr: 'auto'
-                        }
+                    { minWidth: 0, justifyContent: 'center' },
+                    open ? { mr: 3 } : { mr: 'auto' }
                   ]}
                 >
                   {React.createElement(item.icon)}
                 </ListItemIcon>
                 <ListItemText
                   primary={item.name}
-                  sx={[
-                    open
-                      ? {
-                          opacity: 1
-                        }
-                      : {
-                          opacity: 0
-                        }
-                  ]}
+                  sx={[open ? { opacity: 1 } : { opacity: 0 }]}
                 />
               </ListItemButton>
             </ListItem>
@@ -201,37 +184,24 @@ export default function Sidebar() {
             <ListItem key={item.name} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={[
-                  {
-                    minHeight: 48,
-                    px: 2.5
-                  },
+                  { minHeight: 48, px: 2.5 },
                   open
-                    ? {
-                        justifyContent: 'initial'
-                      }
-                    : {
-                        justifyContent: 'center'
-                      }
+                    ? { justifyContent: 'initial' }
+                    : { justifyContent: 'center' }
                 ]}
               >
                 <ListItemIcon
                   sx={[
-                    {
-                      minWidth: 0,
-                      justifyContent: 'center'
-                    },
-                    open
-                      ? {
-                          mr: 3
-                        }
-                      : {
-                          mr: 'auto'
-                        }
+                    { minWidth: 0, justifyContent: 'center' },
+                    open ? { mr: 3 } : { mr: 'auto' }
                   ]}
                 >
                   {React.createElement(item.icon)}
                 </ListItemIcon>
-                <ListItemText primary={item.name} sx={[open ? { opacity: 1 } : { opacity: 0 }]} />
+                <ListItemText
+                  primary={item.name}
+                  sx={[open ? { opacity: 1 } : { opacity: 0 }]}
+                />
               </ListItemButton>
             </ListItem>
           ))}

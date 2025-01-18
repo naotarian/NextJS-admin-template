@@ -1,7 +1,9 @@
 import React from 'react'
+
 import { render, screen } from '@testing-library/react'
-import CustomTable from '@/component/Molecules/Table'
+
 import { TableCell } from '@/component/Atoms/TableAtoms'
+import CustomTable from '@/component/Molecules/Table'
 interface TestData {
   name: string
   age: number

@@ -3,7 +3,6 @@ import { redirect } from 'next/navigation'
 
 import { getAllCookies } from '@/lib/getAllCookies'
 
-
 export const authCheckServer = async () => {
   const serverUrl = process.env.NEXT_PUBLIC_CONTAINER_ROOT
   const cookie = await getAllCookies()
@@ -14,10 +13,10 @@ export const authCheckServer = async () => {
     headers: {
       'X-Requested-With': 'XMLHttpRequest',
       cookie,
-      Referer: process.env.NEXT_PUBLIC_FRONTEND_URL!,
+      Referer: process.env.NEXT_PUBLIC_FRONTEND_URL!
     },
     credentials: 'include',
-    cache: 'no-store',
+    cache: 'no-store'
   }
   const res = await fetch(`${serverUrl}/api/user`, options)
   if (res.status !== 200) {
@@ -39,10 +38,10 @@ export const getUserServer = async () => {
     headers: {
       'X-Requested-With': 'XMLHttpRequest',
       cookie,
-      Referer: process.env.NEXT_PUBLIC_FRONTEND_URL!,
+      Referer: process.env.NEXT_PUBLIC_FRONTEND_URL!
     },
     credentials: 'include',
-    cache: 'no-store',
+    cache: 'no-store'
   }
   const res = await fetch(`${serverUrl}/api/user`, options)
   if (res.status !== 200) {
