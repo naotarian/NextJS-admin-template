@@ -9,7 +9,7 @@ import '@/app/globals.css'
 import SidebarDesktop from '@/component/common/SidebarDesktop'
 import SidebarMobile from '@/component/common/SidebarMobile'
 
-import { ThemeProvider } from '@/component/(admin)/ThemeProvider'
+import { ThemeProvider } from '@/component/common/ThemeProvider'
 import LoadingComponent from '@/component/Atoms/LoadingComponent'
 
 export const metadata: Metadata = {

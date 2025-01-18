@@ -2,7 +2,7 @@ import { authCheckServer } from '@/lib/authCheckServer'
 import Table from '@/component/Molecules/Table'
 import { TableCell } from '@/component/Atoms/TableAtoms'
 import AvatarWithInitials from '@/component/Atoms/AvatarWithInitials'
-import theme from '@/component/(admin)/theme'
+import theme from '@/component/common/theme'
 export default async function Home() {
   const headers = ['Name', 'Email', 'Location', 'Phone', 'Signed Up']
   const rows = [
