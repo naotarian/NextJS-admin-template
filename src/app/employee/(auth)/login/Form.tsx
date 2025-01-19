@@ -4,18 +4,16 @@ import { useState } from 'react'
 
 import { IoIosLogIn } from 'react-icons/io'
 
+
+import Box from '@mui/material/Box'
+import Divider from '@mui/material/Divider'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
+
 import Button from '@/component/Atoms/Button'
+import Input from '@/component/Atoms/Input'
 
 import { useAuth } from '@/hooks/auth'
-
-import Paper from '@mui/material/Paper'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
-import Divider from '@mui/material/Divider'
-import Link from 'next/link'
-import LoadingComponent from '@/component/Atoms/LoadingComponent'
-
 const Form = () => {
   const { login } = useAuth({
     middleware: 'guest',
@@ -85,23 +83,33 @@ const Form = () => {
               <Typography variant="body2">{status}</Typography>
             </Box>
           )}
-          <TextField
-            label="従業員番号"
-            type="text"
+          <Input
+            variant="outlined"
             value={employeeNumber}
+            label={'従業員番号'}
+            fullWidth
+            margin="normal"
+            required
+            maxLength={7}
             onChange={(e) => {
               const inputValue = e.target.value.replace(/[^0-9]/g, '')
               if (inputValue.length <= 7) {
+                console.log('inputValue:', inputValue)
                 setEmployeeNumber(inputValue)
               }
             }}
+          />
+          <Input
+            variant="outlined"
+            type="password"
+            value={password}
+            label={'パスワード'}
             fullWidth
             margin="normal"
-            variant="outlined"
             required
-            inputProps={{ maxLength: 7 }}
+            onChange={(e) => setPassword(e.target.value)}
           />
-          <TextField
+          {/* <TextField
             label="パスワード"
             type="password"
             value={password}
@@ -110,7 +118,7 @@ const Form = () => {
             margin="normal"
             variant="outlined"
             required
-          />
+          /> */}
         </Box>
         <Divider />
         {/* フッター */}
@@ -147,8 +155,7 @@ const Form = () => {
         <Button
           label="新規登録はこちら"
           type="button"
-          variant="text"
-          color="info"
+          variant="outlined"
           href="/employee/auth/register"
           startIcon={<IoIosLogIn />}
           fontWeight={700}
@@ -158,7 +165,6 @@ const Form = () => {
           label="パスワードを忘れた方はこちら"
           type="button"
           variant="text"
-          color="info"
           href="/employee/auth/forgot-password"
           startIcon={<IoIosLogIn />}
           fontWeight={700}

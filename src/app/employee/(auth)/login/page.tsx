@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 
-import LoadingComponent from '@/component/Atoms/LoadingComponent'
 
 import Form from '@/app/employee/(auth)/login/Form'
 
