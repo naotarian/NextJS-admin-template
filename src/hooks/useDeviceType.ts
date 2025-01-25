@@ -1,10 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
 
-export type DeviceType = 'desktop' | 'tablet' | 'mobile'
+export type DeviceType = 'desktop' | 'tablet' | 'mobile' | ''
 
 export function useDeviceType(): DeviceType {
-  const [deviceType, setDeviceType] = useState<DeviceType>('desktop')
+  const [deviceType, setDeviceType] = useState<DeviceType>('')
 
   useEffect(() => {
     const handleResize = () => {

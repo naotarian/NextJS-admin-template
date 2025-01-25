@@ -2,6 +2,8 @@ import React from 'react'
 
 import { render, screen } from '@testing-library/react'
 
+import theme from '@/component/common/theme'
+
 import { TableCell } from '@/component/Atoms/TableAtoms'
 import CustomTable from '@/component/Molecules/Table'
 interface TestData {
@@ -27,9 +29,10 @@ describe('CustomTable', () => {
             <TableCell>{row.age}</TableCell>
           </>
         )}
-        headerStyles={(header) => ({
-          fontWeight: header === 'Name' ? 'bold' : 'normal',
-          backgroundColor: header === 'Age' ? '#f0f0f0' : 'transparent'
+        headerStyles={() => ({
+          fontWeight: 'bold',
+          color: theme.palette.txGray.main, // ヘッダーの文字色
+          backgroundColor: theme.palette.bgGray.main // ヘッダーの背景色
         })}
       />
     )
@@ -39,6 +42,8 @@ describe('CustomTable', () => {
 
     // 修正: フォントウェイトを 700 に変更
     expect(nameHeader).toHaveStyle('font-weight: 700')
-    expect(ageHeader).toHaveStyle('background-color: #f0f0f0')
+    expect(ageHeader).toHaveStyle(
+      `background-color: ${theme.palette.bgGray.main}`
+    )
   })
 })

@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 import { IoIosLogIn } from 'react-icons/io'
 
-
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import Paper from '@mui/material/Paper'
@@ -29,8 +28,6 @@ const Form = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    console.log('employeeNumber:', employeeNumber)
-    console.log('Password:', password)
 
     await login({
       employee_number: employeeNumber,
@@ -44,7 +41,6 @@ const Form = () => {
 
   return (
     <>
-      {/* ログインフォーム */}
       <Paper
         elevation={4}
         sx={{
@@ -58,14 +54,12 @@ const Form = () => {
           overflow: 'hidden'
         }}
       >
-        {/* ヘッダー */}
         <Box sx={{ p: 3, textAlign: 'center', backgroundColor: '#f7f9fc' }}>
           <Typography variant="h5" component="h1" fontWeight="bold">
             ログイン
           </Typography>
         </Box>
         <Divider />
-        {/* 本体 */}
         <Box sx={{ p: 3 }}>
           {errors && (
             <Box sx={{ color: 'error.main', mb: 2 }}>
@@ -109,16 +103,6 @@ const Form = () => {
             required
             onChange={(e) => setPassword(e.target.value)}
           />
-          {/* <TextField
-            label="パスワード"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            fullWidth
-            margin="normal"
-            variant="outlined"
-            required
-          /> */}
         </Box>
         <Divider />
         {/* フッター */}
@@ -126,16 +110,16 @@ const Form = () => {
           <Button
             label="ログイン"
             type="submit"
-            color="info"
+            color="primary"
             startIcon={<IoIosLogIn />}
             fontWeight={700}
-            isLoading={!loading}
+            isLoading={loading}
             onClick={handleSubmit}
+            size="large"
           />
         </Box>
       </Paper>
 
-      {/* リンク用のPaper */}
       <Paper
         elevation={4}
         sx={{

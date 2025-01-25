@@ -9,7 +9,9 @@ interface CustomButtonProps extends ButtonProps {
   isLoading?: boolean // ローディング状態フラグ
   fontWeight?: number // フォントの太さ
 }
-
+/**
+ * @/component/Atoms/DocMD/Button.md
+ */
 const CustomButton = ({
   label,
   isLoading = false,

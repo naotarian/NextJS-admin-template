@@ -34,6 +34,12 @@ export async function fetcher<T>({
   body = null,
   cache = 'default'
 }: FetcherOptions): Promise<T> {
+  // headersにcookieを追加
+  headers = {
+    ...headers,
+    'X-Requested-With': 'XMLHttpRequest',
+    Referer: process.env.NEXT_PUBLIC_FRONTEND_URL!
+  }
   // デフォルトヘッダー設定
   const defaultHeaders = {
     accept: 'application/json',

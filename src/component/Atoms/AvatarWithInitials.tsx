@@ -25,7 +25,7 @@ function stringAvatar(name: string, size?: number) {
       bgcolor: stringToColor(name),
       width: size, // サイズを指定
       height: size, // サイズを指定
-      fontSize: size ? size / 2.5 : undefined // フォントサイズを自動調整
+      fontSize: size ? size / 2.5 : 14 // フォントサイズを自動調整
     },
     children: name
       .split(' ')

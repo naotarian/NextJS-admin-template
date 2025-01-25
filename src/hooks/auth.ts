@@ -25,6 +25,17 @@ interface UseAuthReturn {
     phone: string
     role: number
     is_active: boolean
+    dental_office: {
+      id: string
+      name: string
+      phone: string
+      address: string
+      email: string
+      is_active: boolean
+      created_at: string
+      updated_at: string
+      office_code: string
+    }
   } | null // ユーザーの型を適切に定義
   // register: (params: any) => Promise<void>
   login: (params: LoginParams) => Promise<void>
@@ -91,7 +102,7 @@ export const useAuth = ({
         const redirectUrl = searchParams.get('redirect') || '/'
         router.push(redirectUrl)
       } else {
-        router.push('/employee/dashboard')
+        window.location.pathname = '/employee/attendance'
       }
     } catch (error) {
       console.log(error)

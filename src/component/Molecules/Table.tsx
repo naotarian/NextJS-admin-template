@@ -14,7 +14,7 @@ interface CustomTableProps<T> {
   rows: T[]
   renderRow: (row: T) => React.ReactNode
   rowStyles?: (row: T, rowIndex: number) => object // sx を動的に指定できる関数
-  headerStyles?: (header: string, index: number) => object // TableHead にスタイルを動的に適用
+  headerStyles?: () => object // TableHead にスタイルを動的に適用
 }
 
 const CustomTable = <T,>({
@@ -30,10 +30,7 @@ const CustomTable = <T,>({
         <TableHead>
           <TableRow>
             {headers.map((header, index) => (
-              <TableCell
-                key={index}
-                sx={headerStyles ? headerStyles(header, index) : {}}
-              >
+              <TableCell key={index} sx={headerStyles ? headerStyles() : {}}>
                 {header}
               </TableCell>
             ))}

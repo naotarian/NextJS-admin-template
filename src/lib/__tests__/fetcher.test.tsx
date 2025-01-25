@@ -25,7 +25,9 @@ describe('fetcher 関数', () => {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        Referer: process.env.NEXT_PUBLIC_FRONTEND_URL!
       },
       cache: 'default'
     })
@@ -49,7 +51,9 @@ describe('fetcher 関数', () => {
       method: 'POST',
       headers: {
         accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        Referer: process.env.NEXT_PUBLIC_FRONTEND_URL!
       },
       body: JSON.stringify({ key: 'value' }),
       cache: 'default'
@@ -96,7 +100,9 @@ describe('fetcher 関数', () => {
       method: 'POST',
       headers: {
         accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        Referer: process.env.NEXT_PUBLIC_FRONTEND_URL!
       },
       cache: 'default'
     })
@@ -122,7 +128,9 @@ describe('fetcher 関数', () => {
       headers: {
         accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: 'Bearer token'
+        Authorization: 'Bearer token',
+        'X-Requested-With': 'XMLHttpRequest',
+        Referer: process.env.NEXT_PUBLIC_FRONTEND_URL!
       },
       cache: 'default'
     })

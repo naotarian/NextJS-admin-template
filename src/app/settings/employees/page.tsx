@@ -1,43 +1,54 @@
+import type { Metadata } from 'next'
+
 import theme from '@/component/common/theme'
 
 import AvatarWithInitials from '@/component/Atoms/AvatarWithInitials'
 import { TableCell } from '@/component/Atoms/TableAtoms'
+import { CustomTypography } from '@/component/Atoms/Typography'
 import Table from '@/component/Molecules/Table'
 
 import { authCheckServer } from '@/lib/authCheckServer'
+import { fetcher } from '@/lib/fetcher'
+import { getAllCookies } from '@/lib/getAllCookies'
+
+import type { Employee } from '@/types/EmployeeType'
+export const generateMetadata = (): Metadata => {
+  return {
+    title: '従業員管理'
+  }
+}
 
 export default async function Home() {
+  const user = await authCheckServer()
+  const cookie = await getAllCookies()
+  const apiRoute =
+    process.env.NEXT_PUBLIC_FRONTEND_URL +
+    `/api/employees?dentalOfficeId=${user.dental_office_id}`
+  const employees: Employee[] = await fetcher({
+    url: apiRoute,
+    headers: { cookie }
+  })
+  console.log(Array.isArray(employees))
   const headers = ['Name', 'Email', 'Location', 'Phone', 'Signed Up']
-  const rows = [
-    {
-      name: 'John Doe',
-      email: 'john@example.com',
-      location: 'USA',
-      phone: '123-456-7890',
-      signedUp: '2023-01-01'
-    },
-    {
-      name: 'Jane Smith',
-      email: 'jane@example.com',
-      location: 'Canada',
-      phone: '987-654-3210',
-      signedUp: '2023-02-15'
-    },
-    {
-      name: 'Juan Pérez',
-      email: 'juan@example.com',
-      location: 'Mexico',
-      phone: '555-555-5555',
-      signedUp: '2023-03-10'
-    }
-  ]
 
-  await authCheckServer()
   return (
     <div className="container mx-auto xl:max-w-screen-xl">
+      <div className="mb-4">
+        <CustomTypography
+          variant="h5"
+          sx={{
+            borderBottom: `2px solid ${theme.palette.primary.main}`,
+            paddingBottom: '4px',
+            width: 'fit-content'
+          }}
+        >
+          従業員一覧
+        </CustomTypography>
+      </div>
+
       <Table
         headers={headers}
-        rows={rows}
+        rows={employees}
         renderRow={(row) => (
           <>
             <TableCell
@@ -47,9 +58,9 @@ export default async function Home() {
               {row.name}
             </TableCell>
             <TableCell>{row.email}</TableCell>
-            <TableCell>{row.location}</TableCell>
+            <TableCell>{row.name}</TableCell>
             <TableCell>{row.phone}</TableCell>
-            <TableCell>{row.signedUp}</TableCell>
+            <TableCell>{row.name}</TableCell>
           </>
         )}
         headerStyles={() => ({

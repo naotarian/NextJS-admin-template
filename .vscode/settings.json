@@ -1,3 +1,5 @@
 {
-  "editor.fontFamily": "'Roboto Mono','Courier New', monospace"
+  "editor.fontFamily": "'Noto Sans JP', 'monospace', 'Courier New'",
+  "editor.fontSize": 14, // 必要に応じてフォントサイズを調整
+  "editor.lineHeight": 1.5 // 必要に応じて行間を調整
 }

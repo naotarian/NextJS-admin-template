@@ -24,7 +24,7 @@ export default async function RootLayout({
 }>) {
   const headersList = await headers()
   // read the custom x-url header
-  const header_url = headersList.get('x-pathname') || ''
+  const header_url = headersList.get('x-pathname') || '/'
   return (
     <html lang="ja">
       <ThemeProvider>
@@ -43,7 +43,7 @@ export default async function RootLayout({
               )}
               {/* メインコンテンツ */}
               <main
-                className={`flex-1 ${!ignorePaths.includes(header_url) ? 'xl:mt-[60px]' : ''} `}
+                className={`flex-1 ${!ignorePaths.includes(header_url) ? 'xl:mt-[64px] pt-16' : ''} `}
               >
                 {children}
               </main>

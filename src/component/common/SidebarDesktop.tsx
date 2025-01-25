@@ -22,6 +22,11 @@ import type { Theme, CSSObject } from '@mui/material/styles'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 
+import HeaderMenu from '@/component/common/Menu/HeaderMenu'
+import StandardMenu from '@/component/common/Menu/StandardMenu'
+import ToggleMenu from '@/component/common/Menu/ToggleMenu'
+
+import { useAuth } from '@/hooks/auth'
 import { useDeviceType } from '@/hooks/useDeviceType'
 
 const drawerWidth = 240
@@ -111,6 +116,9 @@ const Drawer = styled(MuiDrawer, {
 export default function Sidebar() {
   const theme = useTheme()
   const [open, setOpen] = React.useState(false)
+  const { user } = useAuth({
+    middleware: 'guest'
+  })
   const deviceType = useDeviceType()
   if (deviceType !== 'desktop') return <></>
   const handleDrawerOpen = () => {
@@ -125,7 +133,13 @@ export default function Sidebar() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar>
+        <Toolbar
+          sx={{
+            display: 'flex', // フレックスボックスを使用
+            justifyContent: 'space-between', // 左端、中央、右端に分布
+            alignItems: 'center' // 垂直方向の中央揃え
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -136,8 +150,15 @@ export default function Sidebar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            {user?.dental_office?.name} ({user?.dental_office?.office_code})
           </Typography>
+          {user && (
+            <HeaderMenu
+              username={user.name}
+              employeeNumber={user.employee_number}
+              userId={user.id}
+            />
+          )}
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -151,32 +172,14 @@ export default function Sidebar() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          {menuItems.map((item, _) => (
-            <ListItem key={item.name} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={[
-                  { minHeight: 48, px: 2.5 },
-                  open
-                    ? { justifyContent: 'initial' }
-                    : { justifyContent: 'center' }
-                ]}
-              >
-                <ListItemIcon
-                  sx={[
-                    { minWidth: 0, justifyContent: 'center' },
-                    open ? { mr: 3 } : { mr: 'auto' }
-                  ]}
-                >
-                  {React.createElement(item.icon)}
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.name}
-                  sx={[open ? { opacity: 1 } : { opacity: 0 }]}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
+        <List sx={{ py: 1 }}>
+          {menuItems.map((item, _) => {
+            if (item?.children) {
+              return <ToggleMenu item={item} open={open} key={item.name} />
+            } else {
+              return <StandardMenu item={item} open={open} key={item.name} />
+            }
+          })}
         </List>
         <Divider />
         <List>

@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 
-import type {
-  TextFieldProps as MuiTextFieldProps
-} from '@mui/material/TextField';
+import type { TextFieldProps as MuiTextFieldProps } from '@mui/material/TextField'
 import TextField from '@mui/material/TextField'
 
-
+/**
+ * @/component/Atoms/DocMD/Input.md
+ */
 type CustomInputProps<Variant extends 'outlined' | 'filled' | 'standard'> =
   MuiTextFieldProps<Variant> & {
     maxLength?: number // 任意のプロパティを追加

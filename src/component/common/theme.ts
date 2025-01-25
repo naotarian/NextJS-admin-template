@@ -1,6 +1,5 @@
 import type { ThemeOptions } from '@mui/material/styles'
 import { createTheme } from '@mui/material/styles'
-
 declare module '@mui/material/styles' {
   // TypographyVariants に `body3` を追加
   interface TypographyVariants {
@@ -41,7 +40,8 @@ declare module '@mui/material/styles' {
 const themeOptions: ThemeOptions = {
   palette: {
     primary: {
-      main: '#E7674C' // アクセントカラー
+      main: '#E7674C', // アクセントカラー
+      light: 'rgba(231, 103, 76, 0.1)'
     },
     background: {
       default: '#FEFFFA' // ベースカラー
